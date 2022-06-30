@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>ユーザー登録</title>
+
+<link href="/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="/js/common.js" th:src="@{/js/common.js}"></script>
+
+<script>
+$(() => {
+	$('#checkBtn').on('click', check => {
+	let userName = $('form#signupForm input[name=userName]').val();
+		if (userName == "") return;
+		checkBtn(userName);
+	});
+});
+</script>
+</head>
+<body>
+
+<header>
+	<h1>My EC Site -- Signup page</h1>
+</header>
+<h2>ユーザー登録</h2>
+	<form name="signupForm" id="signupForm" method="post" action="ecsite/admin/addUser" th:action="@{/ecsite/admin/addUser}">
+		<div th:if="${signupError}">
+			<div th:text="${signupError}"></div>
+		</div>
+		<div>
+			<p>User name : </p>
+			<input type="text" name="userName" class="existUser" />
+			<button type="button" id="checkBtn">チェック</button><p id="output"></p>
+		</div>
+		<div>
+			<p>Password : </p>
+			<input type="password" name="password" />
+		</div>
+		<div>
+			<p>Full name : </p>
+			<input type="text" name="fullName" />
+			<button type="submit" id="signup" disabled>登録</button>
+		</div>
+	</form>
+	<tbody>
+	
+	</tbody>
+	<script>
+		
+	
+	</script>
+	
+	
+</body>
+</html>
